@@ -1,6 +1,7 @@
 # In the name of God
 
 
+import os
 import platform
 
 
@@ -30,3 +31,11 @@ def what_is_the_os_type():
     else:
         # it returns 'windows' or 'linux'
         return os_type.lower()
+
+
+def clear_screen():
+    if what_is_the_os_type() == "linux":
+        clear_cmd = "clear"
+    else:
+        clear_cmd = "cls"
+    os.system(clear_cmd)

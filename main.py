@@ -2,15 +2,19 @@
 
 
 import os
-from pack import frame, put_point
+from pack import frame, put_point, what_is_the_os_type
 
 monitor = frame
-xp, yp = 20, 5
+xp, yp = 5, 5
 
-for y in range(10):
-    for x in range(y):
+for y in range(0, 10):
+    for x in range(0, 10):
         monitor = put_point(x + xp, y + yp, chr(9608), monitor)
 
 
-os.system("cls")
+if what_is_the_os_type() == "linux":
+    os.system("clear")
+else:
+    os.system("cls")
+
 print(monitor)

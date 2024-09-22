@@ -1,15 +1,39 @@
 # In the name of God
 
-
 from time import sleep
-from pack import frame, put_point, clear_screen
 
-monitor = frame
-xp, yp = 40, 5
+from pack import clear_screen, CliRobot
 
-for y in range(0, 20):
+
+robot = CliRobot()
+
+xp, yp = 40, 0
+m = 50
+
+for y in range(0, m):
     for x in range(0, y):
-        monitor = put_point(x + xp, y + yp, chr(9608), monitor)
+        robot.put_point(x + xp, y + yp)
         clear_screen()
-        print(monitor)
-        sleep(0.02)
+        print(robot.page)
+        sleep(0.01)
+
+for y in range(0, m):
+    for x in range(-1, -y - 1, -1):
+        robot.put_point(x + xp, y + yp)
+        clear_screen()
+        print(robot.page)
+        sleep(0.01)
+
+for y in range(0, m):
+    for x in range(-1, +y - 1 - m, -1):
+        robot.put_point(x + xp, y + yp + m)
+        clear_screen()
+        print(robot.page)
+        sleep(0.01)
+
+for y in range(0, m):
+    for x in range(0, m - y):
+        robot.put_point(x + xp, y + yp + m)
+        clear_screen()
+        print(robot.page)
+        sleep(0.01)
